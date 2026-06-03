@@ -11,11 +11,23 @@ const DEFAULT_DATA = {
   profile: {
     name: "Hassan Talha",
     title: "Mobile Application Developer",
+    // Rotating words shown by the animated typewriter in the hero.
+    // Edit freely — falls back to [title] if left empty.
+    roles: [
+      "Mobile Application Developer",
+      "Flutter & Dart Specialist",
+      "Node.js Backend Engineer",
+      "Cross-Platform App Builder",
+    ],
+    // A short, punchy line shown under the name (separate from the long summary).
+    tagline: "I build production-ready Flutter apps end-to-end — sleek UI, real-time features, payments & scalable Node.js backends.",
+    available: true, // shows the green "Available for work" pill in the hero
     location: "Rawalpindi, Pakistan",
     phone: "+92 316 5218752",
     email: "hassantalha807@gmail.com",
     linkedin: "https://pk.linkedin.com/in/hassan-talha-452a7a283",
     github: "",
+    resumeUrl: "", // optional link/path to a downloadable CV (e.g. "assets/resume.pdf")
     image: "", // base64 string set from admin; falls back to initials
     summary:
       "Dedicated Mobile Application Developer with 3+ years of experience delivering production-ready cross-platform applications using Flutter and Dart. Skilled in building feature-rich mobile solutions with real-time chat, in-app calling, WebSocket integration, payment gateways (Stripe, Hyperpay), geolocation, push notifications, and state management via Provider and Riverpod. Backed by strong Node.js and Express.js backend experience and a proven track record of owning the full mobile development lifecycle across Agile teams.",
