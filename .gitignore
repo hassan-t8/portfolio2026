@@ -3,8 +3,16 @@
 Thumbs.db
 *.log
 
-# Local server logs
-*.output
+# Build output
+dist
+dist-ssr
+*.local
 
-# Node (only if you later add tooling)
+# Vercel
+.vercel
+
+# Node
 node_modules/
+
+# Local Claude Code config
+.claude/

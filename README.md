@@ -1,55 +1,88 @@
-# Hassan Talha — Portfolio Website
+# Hassan Talha — Portfolio (React)
 
-A fast, modern, **animated single-page portfolio** with a built-in **admin/settings page** to edit all content (profile image, name, contact, skills, experience, projects, education, etc.) — no coding required.
+> **This is the React version of the portfolio**, living on the `react-portfolio` branch.
+> It is a separate, modern rebuild — different design, multi-page, animated — meant to be
+> hosted on its own with a Vercel CI/CD pipeline.
+> The original no-build static site (with the admin editor) lives on the **`main`** branch.
 
-No build step, no install, no dependencies. Pure HTML/CSS/JS.
+A production-grade personal portfolio for **Hassan Talha — Mobile Application Developer**, built with **React + Vite** and animated with **Framer Motion**.
 
-**Animations & UX:** animated aurora + constellation background, gradient text, a typewriter that rotates through your roles, a live "developer.dart" code card, count-up stat numbers, a scrolling tech marquee, 3D tilt cards, magnetic buttons, a cursor glow, scroll-progress bar, scroll-spy nav, and reveal-on-scroll — all respecting `prefers-reduced-motion`.
+## ✨ Highlights
 
-## Files
+- **Multi-page app** — Home, About, Projects, Contact (client-side routing via React Router).
+- **Distinct design system** — near-black canvas, electric-lime accent, big `Sora` display type.
+- **Light / dark theme** toggle (remembered between visits).
+- **Production animations** — animated route transitions, scroll-reveal, typewriter hero,
+  count-up stats, infinite marquee, magnetic buttons, a custom cursor, parallax background
+  blobs and a scroll-progress bar. All respect `prefers-reduced-motion` and disable on touch.
+- **Filterable projects** grid with animated layout.
+- **Accessible, responsive, SEO-friendly** (semantic markup, meta/OG tags).
+- **Zero content duplication** — everything reads from one data file.
+
+## 🧱 Tech stack
+
+| | |
+|---|---|
+| Framework | React 18 |
+| Build tool | Vite 5 |
+| Routing | React Router 6 |
+| Animation | Framer Motion 11 |
+| Styling | Plain CSS with a token-based design system (no Tailwind, no UI kit) |
+| Icons | Inline SVG (no icon dependency) |
+
+## 📁 Structure
+
 ```
-hassan-portfolio/
-├── index.html        # The public portfolio
-├── admin.html        # Settings page — edit everything here
-├── css/style.css     # All styles
-└── js/
-    ├── data.js       # Default content + storage helpers
-    ├── main.js       # Renders the portfolio
-    └── admin.js      # Powers the settings editor
+├── index.html              # Vite entry HTML
+├── vercel.json             # Vite framework + SPA rewrites + asset caching
+├── public/favicon.svg
+└── src/
+    ├── main.jsx            # App bootstrap + Router
+    ├── App.jsx             # Layout shell + animated routes
+    ├── index.css           # Global design system (themes, components)
+    ├── data/portfolio.js   # ← ALL content lives here (edit this)
+    ├── hooks/useTheme.js
+    ├── components/         # Navbar, Footer, Cursor, Background, Reveal, Magnetic,
+    │                       #   Marquee, Typewriter, Counter, ProjectCard, SkillCard, CTA, Icons
+    └── pages/              # Home, About, Projects, Contact
 ```
 
-## How to run
-Just open `index.html` in a browser.
+## 🚀 Run locally
 
-Or run a tiny local server (recommended, avoids file restrictions):
 ```bash
-cd hassan-portfolio
-python3 -m http.server 8000
-# then open http://localhost:8000
+npm install
+npm run dev       # http://localhost:5173
 ```
 
-## How to edit your portfolio
-1. Open **`admin.html`** (or click "Edit Portfolio" in the site footer).
-2. Update any section — upload a profile photo, change text, add/remove projects, etc.
-3. Click **💾 Save Changes**.
-4. Open `index.html` to see it live.
+Other scripts:
 
-Changes are stored in your browser (localStorage).
+```bash
+npm run build     # production build → dist/
+npm run preview   # serve the production build locally
+```
 
-## Backing up / deploying with your real data
-- **Export**: in admin, click **⬇ Export** → downloads `portfolio-data.json`.
-- **Import**: click **⬆ Import** to restore it on another browser/device.
-- To publish online (GitHub Pages, Netlify, Vercel), upload the whole folder. After deploying, open `admin.html` on the live site, **Import** your JSON, and **Save**.
+## ✏️ How to edit content
 
-> Tip: To ship your data baked-in (so visitors see it without importing), paste your exported JSON values into `DEFAULT_DATA` in `js/data.js`.
+Open **`src/data/portfolio.js`** — it's the single source of truth. Update your profile,
+roles (typewriter), stats, skills, experience, projects, education, certifications, awards
+and languages. Nothing else needs to change.
 
-### Editing the hero animations
-A few hero-only fields live in `profile` inside `js/data.js` (the admin page covers everything else):
-- `roles` — the words the typewriter cycles through.
-- `tagline` — the short line under your name (falls back to `summary`).
-- `available` — set `false` to hide the green "Available for work" pill.
-- `resumeUrl` — link/path to a downloadable CV; shows a Resume/Download button when set.
-- `github` — add your GitHub URL to show the GitHub social icon.
+- Add a CV: drop a PDF in `public/` and set `profile.resumeUrl` (e.g. `/Hassan-Talha-CV.pdf`).
+- Add a photo: place it in `public/`, then swap the `.portrait` initials in `src/pages/Home.jsx`
+  for an `<img src="/your-photo.jpg" />`.
 
-## Reset
-The **↺ Reset** button restores the original content from the resume.
+## ☁️ Deploy on Vercel (CI/CD)
+
+1. Go to **vercel.com → Add New → Project** and import `hassan-t8/portfolio2026`.
+2. On the import screen set **Production Branch = `react-portfolio`** (Settings → Git after import,
+   or pick the branch when importing).
+3. Vercel **auto-detects Vite** — leave Build Command (`vite build`) and Output (`dist`) as-is.
+4. Click **Deploy**.
+
+After that, the pipeline is automatic:
+
+- Push to `react-portfolio` → **Production** deploy.
+- Any other branch / PR → **Preview** deploy with its own URL.
+
+`vercel.json` already configures the Vite framework, SPA fallback routing, and long-term
+caching for hashed assets.
