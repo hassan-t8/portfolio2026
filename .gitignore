@@ -1,0 +1,10 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Local server logs
+*.output
+
+# Node (only if you later add tooling)
+node_modules/

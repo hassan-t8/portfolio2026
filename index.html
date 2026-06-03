@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <meta name="description" content="Mobile Application Developer portfolio — Flutter, Dart, Node.js." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand" id="brand"></div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Mobile Application Developer</span>
+        <h1 id="heroName"></h1>
+        <div class="role" id="heroRole"></div>
+        <p class="summary" id="heroSummary"></p>
+        <div class="hero-meta" id="heroMeta"></div>
+        <div class="btn-row" id="heroBtns"></div>
+      </div>
+      <div class="avatar-wrap" id="avatar"></div>
+    </div>
+    <div class="container">
+      <div class="stats" id="stats"></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block" id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">What I work with</div>
+        <h2>Technical Skills</h2>
+      </div>
+      <div class="skill-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block" id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Where I've worked</div>
+        <h2>Professional Experience</h2>
+      </div>
+      <div class="timeline" id="experienceList"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="block" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Things I've built</div>
+        <h2>Key Projects</h2>
+      </div>
+      <div class="proj-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION / CERTS -->
+  <section class="block" id="education">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Background</div>
+        <h2>Education &amp; Certifications</h2>
+      </div>
+      <div class="two-col">
+        <div class="info-card">
+          <h3>🎓 Education</h3>
+          <div id="educationList"></div>
+        </div>
+        <div class="info-card">
+          <h3>📜 Certifications</h3>
+          <ul class="list-plain" id="certs"></ul>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:22px;">
+        <div class="info-card">
+          <h3>🏆 Awards &amp; Achievements</h3>
+          <ul class="list-plain" id="awards"></ul>
+        </div>
+        <div class="info-card">
+          <h3>🌐 Languages</h3>
+          <div class="lang-row" id="languages"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Let's build something great.</h2>
+      <p>Open to mobile development roles and freelance projects.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:26px;" id="contactEmail"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container"><span id="footerText"></span></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
