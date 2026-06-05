@@ -74,7 +74,7 @@ export default function Home() {
             </div>
             <motion.div
               className="badge-float"
-              initial={{ opacity: 0, x: -16 }}
+              initial={{ opacity: 0.1, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.9 }}
             >
