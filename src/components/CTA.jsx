@@ -3,8 +3,11 @@ import Reveal from "./Reveal";
 import Magnetic from "./Magnetic";
 import { Icon } from "./Icons";
 import { profile } from "../data/portfolio";
+import { usePersona } from "../context/PersonaContext";
 
 export default function CTA() {
+  const { persona } = usePersona();
+  const role = persona.id === "default" ? "software development" : `${persona.short.toLowerCase()} development`;
   return (
     <section className="section">
       <div className="container">
@@ -12,7 +15,7 @@ export default function CTA() {
           <div className="cta">
             <span className="eyebrow">Get in touch</span>
             <h2 style={{ marginTop: 18 }}>Let's build something<br /><span className="accent">great together.</span></h2>
-            <p>Open to mobile development roles and freelance projects. I usually reply within a day.</p>
+            <p>Open to {role} roles and freelance projects. I usually reply within a day.</p>
             <div className="actions">
               <Magnetic>
                 <a className="btn btn-primary" href={`mailto:${profile.email}`}><Icon.mail /> {profile.email}</a>

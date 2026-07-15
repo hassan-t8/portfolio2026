@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { Icon } from "./Icons";
 import { profile } from "../data/portfolio";
+import { usePersona } from "../context/PersonaContext";
 
 export default function Footer() {
+  const { persona } = usePersona();
   const year = new Date().getFullYear();
   return (
     <footer className="footer">
@@ -22,7 +24,7 @@ export default function Footer() {
           </nav>
         </div>
         <div className="copy">
-          © {year} {profile.name} — {profile.title}. Built with React, Vite &amp; Framer Motion.
+          © {year} {profile.name} — {persona.label}. Built with React, Vite &amp; Framer Motion.
         </div>
       </div>
     </footer>

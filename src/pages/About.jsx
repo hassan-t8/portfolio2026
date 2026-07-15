@@ -1,20 +1,42 @@
+import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "../components/Reveal";
 import SkillCard from "../components/SkillCard";
+import PersonaSwitch from "../components/PersonaSwitch";
 import CTA from "../components/CTA";
-import { profile, skills, experience, education, certifications, awards, languages } from "../data/portfolio";
+import { experience, education, certifications, awards, languages } from "../data/portfolio";
+import { usePersona } from "../context/PersonaContext";
 
 export default function About() {
+  const { personaId, persona } = usePersona();
   return (
     <>
       {/* Intro */}
       <section className="section page-top">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">About me</span>
-            <h1 className="section-title">Mobile developer who ships<br />the <span className="accent">whole product.</span></h1>
+            <span className="eyebrow">About me · {persona.label}</span>
+            <h1 className="section-title">{persona.short} developer who ships<br />the <span className="accent">whole product.</span></h1>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="section-lead" style={{ maxWidth: 760, fontSize: 19 }}>{profile.summary}</p>
+          <Reveal delay={0.08}>
+            <div className="proj-persona" style={{ marginTop: 24 }}>
+              <span className="proj-persona-label mono">read as</span>
+              <PersonaSwitch variant="page" />
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                className="section-lead"
+                key={personaId}
+                style={{ maxWidth: 760, fontSize: 19 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {persona.summary}
+              </motion.p>
+            </AnimatePresence>
           </Reveal>
         </div>
       </section>
@@ -27,8 +49,8 @@ export default function About() {
             <h2 className="section-title">Technical Skills</h2>
           </Reveal>
           <div className="skills-grid" style={{ marginTop: 40 }}>
-            {skills.map((s, i) => (
-              <Reveal key={s.category} delay={(i % 3) * 0.07}>
+            {persona.skills.map((s, i) => (
+              <Reveal key={`${personaId}-${s.category}`} delay={(i % 3) * 0.07}>
                 <SkillCard skill={s} />
               </Reveal>
             ))}

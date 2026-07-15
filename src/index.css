@@ -307,6 +307,79 @@ main { min-height: 60vh; }
 .footer-links a:hover { color: var(--accent); }
 .footer .copy { color: var(--ink-3); font-size: 13px; margin-top: 28px; font-family: var(--font-mono); }
 
+/* ---------- Persona accent morph ---------- */
+/* The whole palette keys off --accent (set per persona in App).
+   Give the accented elements a soft transition so switching role
+   feels like the site retints rather than hard-cuts. */
+.accent, .hero-role, .status .ping b, .status .ping i, .scroll-bar,
+.brand .badge, .nav-cta, .btn-primary, .portrait .initials, .portrait .frame,
+.badge-float .big, .proj .sub, .proj .star, .filter.active, .skill-card .ic,
+.edu .p, .info h3 .em, .rolecmd-prompt, .rolechip-bg, .pswitch-bg {
+  transition: color 0.5s var(--ease), background 0.5s var(--ease),
+              border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.eyebrow::before { transition: background 0.5s var(--ease); }
+
+/* ---------- Role command bar (hero) ---------- */
+.rolecmd { margin-top: 24px; max-width: 470px; }
+.rolecmd-bar {
+  display: flex; align-items: center; gap: 11px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; padding: 13px 15px;
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.rolecmd-bar:focus-within { border-color: var(--accent); box-shadow: var(--glow); }
+.rolecmd-prompt { color: var(--accent); font-weight: 700; font-size: 16px; line-height: 1; }
+.rolecmd-input {
+  flex: 1; min-width: 0; background: none; border: none; outline: none;
+  color: var(--ink); font-size: 15px; letter-spacing: 0.01em;
+}
+.rolecmd-input::placeholder { color: var(--ink-3); }
+.rolecmd-kbd {
+  flex: none; font-size: 12px; color: var(--ink-3);
+  border: 1px solid var(--line); border-radius: 7px; padding: 2px 9px;
+  background: var(--surface-2);
+}
+.rolecmd-hint { font-size: 12.5px; color: var(--ink-2); margin-top: 11px; min-height: 1.35em; }
+.rolecmd-hint b { font-weight: 700; }
+.rolecmd-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+.rolechip {
+  position: relative; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 999px; padding: 8px 15px; font-size: 13px; font-weight: 600;
+  color: var(--ink-2); overflow: hidden;
+  transition: color 0.25s, border-color 0.25s, transform 0.2s var(--ease);
+}
+.rolechip:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-1px); }
+.rolechip.active { color: var(--accent-ink); border-color: var(--accent); }
+.rolechip-bg { position: absolute; inset: 0; background: var(--accent); border-radius: 999px; z-index: 0; }
+.rolechip-in { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 7px; }
+.rolechip-in svg { width: 15px; height: 15px; }
+
+/* ---------- Persona switch (navbar / page) ---------- */
+.pswitch {
+  display: inline-flex; gap: 3px; padding: 4px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px;
+}
+.pswitch-btn {
+  position: relative; border: none; background: none; border-radius: 999px;
+  padding: 8px 13px; font-size: 12.5px; font-weight: 600; color: var(--ink-3);
+  overflow: hidden; transition: color 0.25s;
+}
+.pswitch-btn:hover { color: var(--ink); }
+.pswitch-btn.active { color: var(--accent-ink); }
+.pswitch-bg { position: absolute; inset: 0; background: var(--accent); border-radius: 999px; z-index: 0; }
+.pswitch-in { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 7px; }
+.pswitch-in svg { width: 15px; height: 15px; }
+/* Navbar variant: compact, icons only to save horizontal room. */
+.pswitch-nav .pswitch-btn { padding: 8px 10px; }
+.pswitch-nav .pswitch-label { display: none; }
+
+/* "view as" row on Projects / About pages */
+.proj-persona { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+.proj-persona-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+.mobile-persona { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 26px; }
+.mobile-persona .mono { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -327,6 +400,7 @@ main { min-height: 60vh; }
   .nav-links { display: none; }
   .menu-btn { display: grid; }
   .nav-cta { display: none; }
+  .pswitch-nav { display: none; }
 }
 @media (max-width: 620px) {
   .container { padding: 0 20px; }

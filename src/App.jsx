@@ -8,6 +8,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useTheme } from "./hooks/useTheme";
+import { usePersona } from "./context/PersonaContext";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -45,8 +46,24 @@ function AnimatedRoutes() {
   );
 }
 
+/* Retint the whole site's accent to match the active persona.
+   Every component keys off --accent / --accent-ink / --glow, so
+   overriding those three variables morphs the entire palette. */
+function usePersonaAccent(persona, theme) {
+  useEffect(() => {
+    const root = document.documentElement;
+    const acc = theme === "light" ? persona.accent.light : persona.accent.dark;
+    root.style.setProperty("--accent", acc);
+    root.style.setProperty("--accent-ink", persona.accent.ink);
+    root.style.setProperty("--glow", `0 0 60px -12px ${acc}66`);
+    document.title = `Hassan Talha — ${persona.label}`;
+  }, [persona, theme]);
+}
+
 export default function App() {
   const { theme, toggle } = useTheme();
+  const { persona } = usePersona();
+  usePersonaAccent(persona, theme);
   return (
     <>
       <Background />

@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Icon } from "./Icons";
 import { profile } from "../data/portfolio";
+import PersonaSwitch from "./PersonaSwitch";
 
 const links = [
   { to: "/", label: "Home", end: true },
@@ -45,6 +46,7 @@ export default function Navbar({ theme, onToggleTheme }) {
           </nav>
 
           <div className="nav-right">
+            <PersonaSwitch variant="nav" />
             <button className="theme-btn" onClick={onToggleTheme} aria-label="Toggle theme">
               {theme === "dark" ? <Icon.sun /> : <Icon.moon />}
             </button>
@@ -80,6 +82,15 @@ export default function Navbar({ theme, onToggleTheme }) {
                 </NavLink>
               </motion.div>
             ))}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08 + links.length * 0.06 }}
+              className="mobile-persona"
+            >
+              <span className="mono">view profile as</span>
+              <PersonaSwitch variant="page" onPick={() => setOpen(false)} />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
