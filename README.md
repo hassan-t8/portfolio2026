@@ -5,19 +5,43 @@
 > hosted on its own with a Vercel CI/CD pipeline.
 > The original no-build static site (with the admin editor) lives on the **`main`** branch.
 
-A production-grade personal portfolio for **Hassan Talha — Mobile Application Developer**, built with **React + Vite** and animated with **Framer Motion**.
+A production-grade personal portfolio for **Hassan Talha — full-stack Software Developer** (Flutter · Web · Backend), built with **React + Vite** and animated with **Framer Motion**.
 
 ## ✨ Highlights
 
+- **🎭 Role-driven profiles** — visitors land on a generalist *Software Developer* profile and can
+  **type a role** in the hero command bar (or use the navbar switch) to morph the whole site into
+  a tailored **Flutter**, **Web** or **Backend** profile. See [Role-driven profiles](#-role-driven-profiles).
 - **Multi-page app** — Home, About, Projects, Contact (client-side routing via React Router).
-- **Distinct design system** — near-black canvas, electric-lime accent, big `Sora` display type.
+- **Distinct design system** — near-black canvas, per-role accent colour, big `Sora` display type.
 - **Light / dark theme** toggle (remembered between visits).
 - **Production animations** — animated route transitions, scroll-reveal, typewriter hero,
   count-up stats, infinite marquee, magnetic buttons, a custom cursor, parallax background
   blobs and a scroll-progress bar. All respect `prefers-reduced-motion` and disable on touch.
-- **Filterable projects** grid with animated layout.
-- **Accessible, responsive, SEO-friendly** (semantic markup, meta/OG tags).
-- **Zero content duplication** — everything reads from one data file.
+- **Filterable projects** grid with animated layout — re-framed per role.
+- **Accessible, responsive, SEO-friendly** (semantic markup, meta/OG tags, per-role `<title>`).
+- **Zero content duplication** — everything reads from two data files.
+
+## 🎭 Role-driven profiles
+
+The same person is presented through four lenses. Type a keyword (e.g. `flutter`, `react`, `node`,
+`php`) in the hero command bar, click a role chip, or use the navbar switch — the hero copy, skills,
+featured projects and the **site-wide accent colour** all retune to that role. Every project carries
+per-role framings, so the same real work is retold as its **Flutter app**, its **React/Next.js web
+build** and its **Node/PHP backend**.
+
+The active role is saved to the **URL** (`?role=`) and `localStorage`, so each profile is a
+**shareable, bookmarkable link**:
+
+| Profile | Accent | Shareable link | Also matches when you type… |
+|---|---|---|---|
+| **Software Developer** (default) | lime | `/` or `/?role=default` | `software`, `dev`, `full stack` |
+| **Flutter Developer** | blue | `/?role=flutter` | `flutter`, `dart`, `mobile`, `app`, `android`, `ios` |
+| **Web Developer** | violet | `/?role=web` | `web`, `react`, `next`, `frontend`, `svelte`, `ui` |
+| **Backend Developer** | emerald | `/?role=backend` | `backend`, `node`, `express`, `php`, `laravel`, `mysql`, `postgres`, `mongo`, `redis`, `supabase` |
+
+The role also applies on the inner pages, e.g. `/about?role=backend`, `/projects?role=web`,
+`/projects?role=flutter`. Press <kbd>/</kbd> anywhere to jump into the command bar.
 
 ## 🧱 Tech stack
 
@@ -37,14 +61,18 @@ A production-grade personal portfolio for **Hassan Talha — Mobile Application 
 ├── vercel.json             # Vite framework + SPA rewrites + asset caching
 ├── public/favicon.svg
 └── src/
-    ├── main.jsx            # App bootstrap + Router
-    ├── App.jsx             # Layout shell + animated routes
-    ├── index.css           # Global design system (themes, components)
-    ├── data/portfolio.js   # ← ALL content lives here (edit this)
+    ├── main.jsx                    # App bootstrap + Router + PersonaProvider
+    ├── App.jsx                     # Layout shell + animated routes + per-role accent/title
+    ├── index.css                   # Global design system (themes, components)
+    ├── data/
+    │   ├── portfolio.js            # ← Static content: profile, experience, education, etc.
+    │   └── personas.js             # ← Role content: per-role copy/skills + per-project framings
+    ├── context/PersonaContext.jsx  # Active-role state + URL/localStorage persistence
     ├── hooks/useTheme.js
-    ├── components/         # Navbar, Footer, Cursor, Background, Reveal, Magnetic,
-    │                       #   Marquee, Typewriter, Counter, ProjectCard, SkillCard, CTA, Icons
-    └── pages/              # Home, About, Projects, Contact
+    ├── components/                 # Navbar, Footer, Cursor, Background, Reveal, Magnetic, Marquee,
+    │                               #   Typewriter, Counter, ProjectCard, SkillCard, CTA, Icons,
+    │                               #   RoleCommand (hero command bar), PersonaSwitch (role switcher)
+    └── pages/                      # Home, About, Projects, Contact
 ```
 
 ## 🚀 Run locally
@@ -63,9 +91,20 @@ npm run preview   # serve the production build locally
 
 ## ✏️ How to edit content
 
-Open **`src/data/portfolio.js`** — it's the single source of truth. Update your profile,
-roles (typewriter), stats, skills, experience, projects, education, certifications, awards
-and languages. Nothing else needs to change.
+Content lives in two files:
+
+- **`src/data/portfolio.js`** — static, role-independent content: your profile (name, contact,
+  socials), work experience, education, certifications, awards and languages.
+- **`src/data/personas.js`** — everything role-specific:
+  - `personas[]` — for each role: the label, accent colour, typewriter roles, tagline, summary,
+    stats, skill groups, hero badge and the `keywords` that make typing match that role.
+  - `projectData[]` — each project once, with a `variants` map (`default` / `flutter` / `web` /
+    `backend`) so the same project is described from each angle. Add or reword a variant to change
+    how a project reads for that role.
+
+To add a whole new role, append an entry to `personas[]` (give it a unique `id`, `keywords` and an
+`accent`) and add a matching `variants` key to each project — the command bar, navbar switch and all
+pages pick it up automatically.
 
 - Add a CV: drop a PDF in `public/` and set `profile.resumeUrl` (e.g. `/Hassan-Talha-CV.pdf`).
 - Add a photo: place it in `public/`, then swap the `.portrait` initials in `src/pages/Home.jsx`
