@@ -129,14 +129,16 @@ function render() {
   $("projectsGrid").innerHTML = (D.projects || [])
     .map((pr, i) => {
       const tags = (pr.tech || "").split(",").map((t) => t.trim()).filter(Boolean);
+      const links = (pr.links || []).filter((l) => l && l.url);
       return `<div class="proj-card reveal tilt">
         <div class="proj-top">
           <h3>${esc(pr.name)}</h3>
-          <span class="proj-num">0${i + 1}</span>
+          <span class="proj-num">${String(i + 1).padStart(2, "0")}</span>
         </div>
-        <div class="proj-period">${esc(pr.period)}</div>
+        <div class="proj-period">${esc(pr.period)}${pr.status ? ` <span class="proj-status">${esc(pr.status)}</span>` : ""}</div>
         <ul>${(pr.bullets || []).map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
         <div class="proj-tags">${tags.map((t) => `<span class="t">${esc(t)}</span>`).join("")}</div>
+        ${links.length ? `<div class="proj-links">${links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
       </div>`;
     }).join("");
 
@@ -167,7 +169,7 @@ function render() {
   $("socials").innerHTML = soc.join("");
 
   $("footerText").innerHTML =
-    `© <span id="year"></span> ${esc(p.name)} · Built with Flutter-grade attention to detail · <a href="admin.html">Edit</a>`;
+    `© <span id="year"></span> ${esc(p.name)} · Flutter & Full Stack Developer`;
   $("year").textContent = new Date().getFullYear();
 }
 
