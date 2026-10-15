@@ -19,8 +19,9 @@ const DEFAULT_DATA = {
       "Mobile App Developer · Android & iOS",
       "React & Next.js Web Developer",
       "Node.js & NestJS Backend Developer",
+      "PHP & Laravel Developer",
     ],
-    tagline: "I build and ship production apps end-to-end: Flutter apps live on Google Play, React / Next.js web apps and Node.js / NestJS APIs with real-time features and payments.",
+    tagline: "I build and ship production apps end-to-end: Flutter apps live on Google Play, React / Next.js web apps, and Node.js / NestJS and PHP / Laravel APIs with real-time features and payments.",
     available: true,
     location: "Rawalpindi, Pakistan",
     phone: "+92 316 5218752",
@@ -30,7 +31,7 @@ const DEFAULT_DATA = {
     resumeUrl: "assets/Hassan_Talha_CV.pdf",
     image: "",
     summary:
-      "Flutter & Full Stack Developer with 3+ years of experience building and publishing production apps. Sole developer of the Care N Clean User, Partner and CRM apps and main developer on the CureVista healthcare platform, with 5 apps published on Google Play. Strong in Flutter, Riverpod, React, Next.js, Node.js, NestJS, PostgreSQL and MySQL, with real-time features (Socket.IO, LiveKit), payments (HyperPay, Stripe), Firebase push notifications and CI/CD.",
+      "Flutter & Full Stack Developer with 3+ years of experience building and publishing production apps. Sole developer of the Care N Clean User, Partner and CRM apps and main developer on the CureVista healthcare platform, with 5 apps published on Google Play. Strong in Flutter, Riverpod, React, Next.js, Node.js, NestJS, PHP, Laravel, PostgreSQL and MySQL, with real-time features (Socket.IO, LiveKit), payments (HyperPay, Stripe), Firebase push notifications and CI/CD.",
   },
 
   stats: [
@@ -42,8 +43,8 @@ const DEFAULT_DATA = {
 
   skills: [
     { category: "Mobile Development", items: ["Flutter", "Dart", "Riverpod", "Provider", "Clean Architecture", "go_router", "Dio", "Firebase FCM", "Google Maps", "LiveKit Calls", "Android & iOS", "Google Play Console"] },
-    { category: "Frontend Development", items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Svelte", "Vue 3", "Astro", "Responsive UI", "SEO"] },
-    { category: "Backend Development", items: ["Node.js", "Express.js", "NestJS", "REST APIs", "Socket.IO", "JWT / OAuth", "Sign in with Apple", "Cron Jobs", "PHP"] },
+    { category: "Frontend Development", items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Svelte", "Vue 3", "Astro", "jQuery", "Bootstrap", "Responsive UI", "SEO"] },
+    { category: "Backend Development", items: ["Node.js", "Express.js", "NestJS", "PHP 8", "Laravel", "Laravel Sanctum", "REST APIs", "Socket.IO", "JWT / OAuth", "Sign in with Apple", "Cron Jobs"] },
     { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "Prisma", "Sequelize", "TypeORM"] },
     { category: "Payments & Integrations", items: ["HyperPay", "Stripe", "PayPal", "JazzCash", "Easypaisa", "Wallets", "Twilio", "AWS S3", "Google Places"] },
     { category: "DevOps & Tools", items: ["Docker", "GitHub Actions CI/CD", "Nginx", "PM2", "Linux VPS", "Vercel", "Git", "Jira", "Figma", "Postman"] },
@@ -188,6 +189,24 @@ const DEFAULT_DATA = {
       bullets: [
         "Built a layered Deals module with 10 CRUD REST endpoints and rebuilt the account views with Vue 3, TypeScript and reusable form components.",
       ],
+    },
+    {
+      name: "Laravel REST API",
+      tech: "PHP 8, Laravel 10, Laravel Sanctum, MySQL",
+      period: "2023 – 2024",
+      bullets: [
+        "REST API with sign-up and login, request validation, bcrypt password hashing and token authentication using Laravel Sanctum.",
+      ],
+      links: [{ label: "Code", url: "https://github.com/hassan-t8/Apis_laraval" }],
+    },
+    {
+      name: "Restaurant Ordering Website",
+      tech: "PHP, MySQL, JavaScript, jQuery, Bootstrap",
+      period: "2023",
+      bullets: [
+        "Online food ordering with cart, checkout, order tracking, search and quick view, plus an admin panel to manage menu, orders, users and messages.",
+      ],
+      links: [{ label: "Code", url: "https://github.com/hassan-t8/Ecommerce_Restaurant_website" }],
     },
     {
       name: "Touch Bistro – Restaurant Ordering System",
