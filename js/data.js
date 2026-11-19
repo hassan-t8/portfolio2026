@@ -149,21 +149,9 @@ const DEFAULT_DATA = {
 
   projects: [
     {
-      name: "Care N Clean – User, Partner & CRM Apps",
-      status: "Live on Google Play",
-      tech: "Flutter, Riverpod, Provider, Socket.IO, Firebase FCM, Google Maps, HyperPay, Node.js",
-      period: "Jun 2025 – Oct 2026",
-      bullets: [
-        "Sole developer of three production apps for a UAE home-services platform: customer booking, partner/driver/crew field operations, and a 51-module admin CRM.",
-        "Server-driven service catalog, cart and recurring bookings, HyperPay payments and wallets, real-time dispatch via Socket.IO, and 170+ automated test files.",
-      ],
-      links: [
-        { label: "CNC Partner on Google Play", url: PLAY + "com.carenclean.partner" },
-        { label: "Website", url: "https://carencleans.com" },
-      ],
-    },
-    {
       name: "CureVista – Home Physiotherapy Platform",
+      image: "assets/projects/curevista.jpg",
+      imageUrl: "curevista.pk",
       status: "Live on Google Play",
       tech: "Flutter, Riverpod, LiveKit, NestJS, PostgreSQL, Redis, React, Astro",
       period: "Jun 2026 – Oct 2026",
@@ -179,6 +167,8 @@ const DEFAULT_DATA = {
     },
     {
       name: "WePower Solar – Company Website & Admin CRM",
+      image: "assets/projects/wepower.jpg",
+      imageUrl: "wepowerenergysolutions.com",
       status: "Live",
       tech: "PHP 8, MySQL, React, Express, Firebase FCM, Chart.js, GitHub Actions",
       period: "May 2026 – Oct 2026",
@@ -190,6 +180,20 @@ const DEFAULT_DATA = {
         { label: "Live Site", url: "https://wepowerenergysolutions.com/" },
         { label: "Admin Panel", url: "https://wepowerenergysolutions.com/admin/login" },
         { label: "Code", url: "https://github.com/hassan-t8/wepower-solar-php" },
+      ],
+    },
+    {
+      name: "Care N Clean – User, Partner & CRM Apps",
+      status: "Live on Google Play",
+      tech: "Flutter, Riverpod, Provider, Socket.IO, Firebase FCM, Google Maps, HyperPay, Node.js",
+      period: "Jun 2025 – Oct 2026",
+      bullets: [
+        "Sole developer of three production apps for a UAE home-services platform: customer booking, partner/driver/crew field operations, and a 51-module admin CRM.",
+        "Server-driven service catalog, cart and recurring bookings, HyperPay payments and wallets, real-time dispatch via Socket.IO, and 170+ automated test files.",
+      ],
+      links: [
+        { label: "CNC Partner on Google Play", url: PLAY + "com.carenclean.partner" },
+        { label: "Website", url: "https://carencleans.com" },
       ],
     },
     {

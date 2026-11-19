@@ -157,7 +157,11 @@ function render() {
     .map((pr, i) => {
       const tags = (pr.tech || "").split(",").map((t) => t.trim()).filter(Boolean);
       const links = (pr.links || []).filter((l) => l && l.url);
-      return `<div class="proj-card reveal tilt">
+      const shot = pr.image
+        ? `<div class="proj-shot"><div class="proj-bar"><span></span><span></span><span></span><em>${esc(pr.imageUrl || "")}</em></div><img src="${esc(pr.image)}" alt="${esc(pr.name)} screenshot" loading="lazy" decoding="async"></div>`
+        : "";
+      return `<div class="proj-card reveal tilt${pr.image ? " has-shot" : ""}">
+        ${shot}
         <div class="proj-top">
           <h3>${esc(pr.name)}</h3>
           <span class="proj-num">${String(i + 1).padStart(2, "0")}</span>
