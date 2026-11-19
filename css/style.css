@@ -450,3 +450,62 @@ section.block { padding: 64px 0; position: relative; }
 .proj-links a { font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; text-decoration: none;
   color: #e6f6ff; background: rgba(45, 212, 191, .10); border: 1px solid rgba(45, 212, 191, .35); transition: background .2s, transform .2s; }
 .proj-links a:hover { background: rgba(45, 212, 191, .22); transform: translateY(-1px); }
+
+/* ================= Mobile games showcase ================= */
+.game-grid { display: grid; grid-template-columns: 1fr; gap: 26px; }
+.game-card {
+  --gc: #5b8cff;
+  position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: center;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--gc) 13%, var(--card)) 0%, var(--card) 55%);
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; overflow: hidden;
+  transition: border-color .3s, box-shadow .3s, transform .3s var(--ease);
+}
+.game-card::before { content: ""; position: absolute; inset: auto -20% -60% auto; width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gc) 28%, transparent), transparent 65%); pointer-events: none; }
+.game-card:hover { border-color: var(--gc); box-shadow: 0 18px 50px -14px color-mix(in srgb, var(--gc) 55%, transparent); }
+.game-card:nth-child(even) .game-phones { order: 2; }
+.game-phones { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 14px; min-height: 330px; }
+.phone { width: 31%; max-width: 160px; aspect-ratio: 9 / 19.5; border-radius: 22px; padding: 6px; background: #0a0f1d;
+  border: 2px solid color-mix(in srgb, var(--gc) 45%, #2a3658); box-shadow: 0 20px 40px -14px rgba(0,0,0,.7); overflow: hidden;
+  transition: transform .45s var(--ease); }
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 16px; display: block; }
+.phone.p0 { transform: rotate(-6deg) translateY(10px); }
+.phone.p1 { transform: translateY(-14px) scale(1.06); z-index: 2; }
+.phone.p2 { transform: rotate(6deg) translateY(10px); }
+.game-card:hover .phone.p0 { transform: rotate(-9deg) translate(-6px, 4px); }
+.game-card:hover .phone.p1 { transform: translateY(-22px) scale(1.09); }
+.game-card:hover .phone.p2 { transform: rotate(9deg) translate(6px, 4px); }
+.game-body { position: relative; z-index: 1; }
+.game-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.game-icon { width: 58px; height: 58px; border-radius: 15px; border: 2px solid color-mix(in srgb, var(--gc) 60%, transparent); box-shadow: 0 8px 20px -8px var(--gc); }
+.game-card h3 { font-size: 24px; line-height: 1.15; }
+.game-genre { color: var(--gc); font-weight: 700; font-size: 13px; font-family: ui-monospace, monospace; margin-top: 3px; }
+.game-status { margin-left: auto; padding: 4px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; white-space: nowrap;
+  color: var(--gc); background: color-mix(in srgb, var(--gc) 14%, transparent); border: 1px solid color-mix(in srgb, var(--gc) 45%, transparent); }
+.game-card ul { list-style: none; display: grid; gap: 9px; margin-bottom: 16px; }
+.game-card ul li { position: relative; padding-left: 20px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+.game-card ul li::before { content: "▹"; position: absolute; left: 0; color: var(--gc); }
+@media (max-width: 860px) {
+  .game-card { grid-template-columns: 1fr; padding: 20px; gap: 18px; }
+  .game-card:nth-child(even) .game-phones { order: 0; }
+  .game-phones { min-height: 0; gap: 8px; padding-top: 16px; }
+  .game-status { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone, .game-card:hover .phone { transition: none; }
+}
+/* five stat boxes: one row on desktop, last one full width on phones */
+.stats { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 860px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stats > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+/* odd skill card out (7 categories): let the last one stretch across the row */
+.skill-grid > :last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+@media (max-width: 960px) {
+  .skill-grid > :last-child:nth-child(3n+1) { grid-column: auto; }
+  .skill-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 720px) {
+  .skill-grid > :last-child:nth-child(odd) { grid-column: auto; }
+}

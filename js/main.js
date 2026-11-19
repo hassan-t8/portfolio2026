@@ -125,6 +125,33 @@ function render() {
       </div>
     </div>`).join("");
 
+  // Games (phone screenshots + details)
+  const gamesGrid = $("gamesGrid");
+  if (gamesGrid) {
+    gamesGrid.innerHTML = (D.games || [])
+      .map((g) => {
+        const tags = (g.tech || "").split(",").map((t) => t.trim()).filter(Boolean);
+        const links = (g.links || []).filter((l) => l && l.url);
+        const shots = (g.shots || []).filter(Boolean);
+        return `<article class="game-card reveal" style="--gc:${esc(g.color || "#5b8cff")}">
+          <div class="game-phones">${shots.map((s, i) => `<div class="phone p${i}"><img src="${esc(s)}" alt="${esc(g.name)} screenshot ${i + 1}" loading="lazy" decoding="async"></div>`).join("")}</div>
+          <div class="game-body">
+            <div class="game-head">
+              ${g.icon ? `<img class="game-icon" src="${esc(g.icon)}" alt="" loading="lazy">` : ""}
+              <div>
+                <h3>${esc(g.name)}</h3>
+                <div class="game-genre">${esc(g.genre)}</div>
+              </div>
+              ${g.status ? `<span class="game-status">${esc(g.status)}</span>` : ""}
+            </div>
+            <ul>${(g.bullets || []).map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+            <div class="proj-tags">${tags.map((t) => `<span class="t">${esc(t)}</span>`).join("")}</div>
+            ${links.length ? `<div class="proj-links">${links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+          </div>
+        </article>`;
+      }).join("");
+  }
+
   // Projects
   $("projectsGrid").innerHTML = (D.projects || [])
     .map((pr, i) => {
@@ -254,7 +281,7 @@ function initNav() {
   if (toggle) toggle.addEventListener("click", () => links.classList.toggle("open"));
   links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
 
-  const sections = ["about", "skills", "experience", "projects", "education", "contact"]
+  const sections = ["about", "skills", "experience", "games", "projects", "education", "contact"]
     .map((id) => $(id)).filter(Boolean);
   const navItems = Array.from(links.querySelectorAll("a"));
 

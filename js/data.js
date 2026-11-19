@@ -20,6 +20,7 @@ const DEFAULT_DATA = {
       "React & Next.js Web Developer",
       "Node.js & NestJS Backend Developer",
       "PHP & Laravel Developer",
+      "Mobile Game Developer · Flutter & Flame",
     ],
     tagline: "I build and ship production apps end-to-end: Flutter apps live on Google Play, React / Next.js web apps, and Node.js / NestJS and PHP / Laravel APIs with real-time features and payments.",
     available: true,
@@ -37,12 +38,14 @@ const DEFAULT_DATA = {
   stats: [
     { value: "3+", label: "Years Experience" },
     { value: "5", label: "Apps on Google Play" },
+    { value: "4", label: "Mobile Games Built" },
     { value: "15+", label: "Projects Delivered" },
     { value: "2400+", label: "Commits in Production Apps" },
   ],
 
   skills: [
     { category: "Mobile Development", items: ["Flutter", "Dart", "Riverpod", "Provider", "Clean Architecture", "go_router", "Dio", "Firebase FCM", "Google Maps", "LiveKit Calls", "Android & iOS", "Google Play Console"] },
+    { category: "Game Development", items: ["Flame Engine", "Game Loops & Physics", "Canvas Rendering", "Sprite-free Procedural Art", "Game Balancing Bots", "AdMob (Rewarded, Interstitial, Banner)", "In-app Purchases", "Firebase Analytics & Crashlytics", "Procedural Audio"] },
     { category: "Frontend Development", items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Svelte", "Vue 3", "Astro", "jQuery", "Bootstrap", "Responsive UI", "SEO"] },
     { category: "Backend Development", items: ["Node.js", "Express.js", "NestJS", "PHP 8", "Laravel", "Laravel Sanctum", "REST APIs", "Socket.IO", "JWT / OAuth", "Sign in with Apple", "Cron Jobs"] },
     { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "Prisma", "Sequelize", "TypeORM"] },
@@ -82,6 +85,64 @@ const DEFAULT_DATA = {
       bullets: [
         "Built RESTful APIs with Node.js, Express.js and MongoDB for mobile apps and admin panels, including authentication and role management.",
         "Designed database models, optimized queries and supported frontend and mobile teams with API integration and documentation.",
+      ],
+    },
+  ],
+
+  // Mobile games I designed, built and am publishing on Google Play (Flutter + Flame).
+  games: [
+    {
+      name: "Patang Clash",
+      genre: "Kite fighting · Arcade",
+      status: "Closed testing on Google Play",
+      color: "#ff4f9a",
+      icon: "assets/games/patang_icon.jpg",
+      shots: ["assets/games/patang_1.jpg", "assets/games/patang_2.jpg", "assets/games/patang_3.jpg"],
+      tech: "Flutter, Flame, AdMob, In-app purchases, Firebase",
+      bullets: [
+        "One-finger kite fighting inspired by Basant: hold to rise, cross strings with rival kites and cut them before they cut you.",
+        "Missions, kite collection, upgrades and daily rewards, with rewarded + interstitial ads and 5 Google Play in-app products.",
+      ],
+      links: [{ label: "Website", url: "https://hassan-t8.github.io/" }],
+    },
+    {
+      name: "Gully Cricket",
+      genre: "Cricket · Sports",
+      status: "Coming soon to Google Play",
+      color: "#2fbf5b",
+      icon: "assets/games/gully_icon.jpg",
+      shots: ["assets/games/gully_1.jpg", "assets/games/gully_2.jpg", "assets/games/gully_3.jpg"],
+      tech: "Flutter, Flame, Custom 3D renderer, AdMob, Firebase Crashlytics, TTS",
+      bullets: [
+        "Quick limited-overs matches: coin toss, timing-based batting with shot aiming, real bowling (yorkers, bouncers, slower balls, spin), running between wickets and run-outs.",
+        "Hand-written 3D camera and animated player rig on a 2D canvas, TV-style broadcast view, crowd sounds and spoken commentary.",
+      ],
+      links: [{ label: "Website", url: "https://hassan-t8.github.io/gully-cricket/" }],
+    },
+    {
+      name: "Desi Village Farm",
+      genre: "Farming · Time management",
+      status: "In development",
+      color: "#ff8f00",
+      icon: "assets/games/farm_icon.jpg",
+      shots: ["assets/games/farm_1.jpg", "assets/games/farm_2.jpg", "assets/games/farm_3.jpg"],
+      tech: "Flutter, Flame, AdMob, In-app purchases, Firebase Analytics",
+      bullets: [
+        "Run a Punjab village farm and dhaba: feed hens, buffaloes and sheep, cook lassi, parathas and desi ghee, and serve customers before sunset.",
+        "30 days across 4 seasons (Basant, Garmi, Barsaat, Eid), all art drawn in code, and a simulation bot that checks every level is winnable.",
+      ],
+    },
+    {
+      name: "Power Grid Defense",
+      genre: "Tower defense · Strategy",
+      status: "In development",
+      color: "#22d3ee",
+      icon: "assets/games/grid_icon.jpg",
+      shots: ["assets/games/grid_1.jpg", "assets/games/grid_2.jpg", "assets/games/grid_3.jpg"],
+      tech: "Flutter, Flame, Graph search, AdMob, Firebase Crashlytics",
+      bullets: [
+        "Tower defense with a twist: turrets only fire when wired to the reactor through a power grid, and drone robots cut the cables.",
+        "5 upgradable turrets, 6 robot types with a boss, 30 levels + endless mode, neon visual effects and synthesized sound.",
       ],
     },
   ],
